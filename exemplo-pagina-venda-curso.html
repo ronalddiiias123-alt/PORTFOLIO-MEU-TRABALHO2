@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tráfego do Zero — curso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #101b2d;
+    --panel: #16233a;
+    --ink: #f5f1e6;
+    --muted: #93a3bd;
+    --gold: #d4af6a;
+    --line: rgba(212,175,106,0.22);
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+  }
+  .wrap{ max-width: 700px; margin: 0 auto; padding: 72px 24px 90px; }
+
+  h1, h2{ font-family: 'Fraunces', serif; font-weight: 600; }
+
+  /* ---------- hero ---------- */
+  .hero{ margin-bottom: 60px; }
+  h1{ font-size: 44px; line-height: 1.18; margin: 0 0 22px; max-width: 15ch; }
+  .hero-sub{ font-size: 18px; color: var(--muted); max-width: 46ch; margin: 0 0 30px; }
+  .cta{
+    display: inline-block;
+    background: var(--gold);
+    color: #1a1200;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 16px 30px;
+    border-radius: 3px;
+    font-size: 15px;
+  }
+  .cta:hover{ background: #e3c383; }
+  .trust{ margin-top: 16px; font-size: 13px; color: var(--muted); }
+
+  /* ---------- pra quem é ---------- */
+  section{ margin-bottom: 60px; }
+  h2.small{ font-size: 24px; margin: 0 0 22px; }
+  .fit-list{ list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .fit-list li{ font-size: 15px; padding-left: 20px; position: relative; color: var(--ink); }
+  .fit-list li::before{ content: "—"; position: absolute; left: 0; color: var(--gold); }
+
+  /* ---------- trilha / módulos: sequência real ---------- */
+  .path{ position: relative; padding-left: 38px; }
+  .path::before{
+    content:""; position:absolute; left: 13px; top: 8px; bottom: 8px;
+    width: 1px; background: var(--line);
+  }
+  .mod{ position: relative; padding-bottom: 30px; }
+  .mod:last-child{ padding-bottom: 0; }
+  .mod::before{
+    content: attr(data-n);
+    position: absolute; left: -38px; top: 0;
+    width: 27px; height: 27px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg);
+  }
+  .mod b{ display: block; font-size: 16px; margin-bottom: 5px; }
+  .mod p{ margin: 0; color: var(--muted); font-size: 14px; max-width: 46ch; }
+
+  /* ---------- depoimento ---------- */
+  .quote{
+    border-left: 2px solid var(--gold);
+    padding-left: 22px;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--ink);
+    max-width: 50ch;
+  }
+  .quote cite{ display: block; font-family: 'Inter', sans-serif; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+  /* ---------- oferta ---------- */
+  .offer{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 34px 28px;
+  }
+  .offer .price-row{ display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .offer .old{ text-decoration: line-through; color: var(--muted); font-size: 16px; }
+  .offer .new{ font-family: 'Fraunces', serif; font-size: 34px; color: var(--gold); }
+  .offer .installments{ font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .offer ul{ list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 10px; }
+  .offer li{ font-size: 14px; padding-left: 20px; position: relative; }
+  .offer li::before{ content: "✓"; position: absolute; left: 0; color: var(--gold); }
+  .guarantee{ font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+  /* ---------- faq ---------- */
+  .faq-item{ padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .faq-item:last-child{ border-bottom: none; }
+  .faq-item b{ display: block; font-size: 15px; margin-bottom: 6px; }
+  .faq-item p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* ---------- final ---------- */
+  .final{ text-align: left; }
+  .final h2{ font-size: 28px; max-width: 16ch; margin-bottom: 14px; }
+  .final p{ color: var(--muted); font-size: 15px; margin: 0 0 24px; max-width: 42ch; }
+
+  footer{ font-size: 12px; color: var(--muted); opacity: .7; margin-top: 20px; }
+
+  @media (max-width: 560px){
+    .wrap{ padding: 48px 20px 64px; }
+    h1{ font-size: 32px; }
+    .offer{ padding: 26px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Você não precisa entender de marketing pra vender todo dia.</h1>
+    <p class="hero-sub">Um passo a passo direto pra colocar seu primeiro anúncio no ar e transformar ele em venda — mesmo começando do zero.</p>
+    <a class="cta" href="#oferta">Quero começar agora</a>
+    <p class="trust">Acesso imediato · Suporte pra dúvidas · Sem experiência prévia</p>
+  </div>
+
+  <section>
+    <h2 class="small">Pra quem é</h2>
+    <ul class="fit-list">
+      <li>Você vende algo (produto, serviço ou infoproduto) mas depende só do orgânico</li>
+      <li>Já tentou anunciar sozinho e não sabe se fez certo</li>
+      <li>Quer parar de adivinhar e seguir um caminho testado</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="small">A trilha do curso</h2>
+    <div class="path">
+      <div class="mod" data-n="1">
+        <b>Base da conta</b>
+        <p>Como configurar o gerenciador de anúncios sem cair em bloqueio.</p>
+      </div>
+      <div class="mod" data-n="2">
+        <b>Sua primeira oferta</b>
+        <p>Como escolher o que anunciar primeiro e por quanto.</p>
+      </div>
+      <div class="mod" data-n="3">
+        <b>O anúncio que gera clique</b>
+        <p>Estrutura de criativo e texto que faz a pessoa parar de rolar a tela.</p>
+      </div>
+      <div class="mod" data-n="4">
+        <b>Lendo os números</b>
+        <p>O que olhar no painel pra saber se o anúncio está funcionando.</p>
+      </div>
+      <div class="mod" data-n="5">
+        <b>Escalando sem perder dinheiro</b>
+        <p>Quando aumentar o orçamento e quando parar um anúncio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <blockquote class="quote">
+      "Rodei meu primeiro anúncio no terceiro dia de curso. Não vendi de cara, mas pela primeira vez entendi o que eu tava fazendo errado antes."
+      <cite>Depoimento de exemplo — conteúdo fictício</cite>
+    </blockquote>
+  </section>
+
+  <section id="oferta">
+    <h2 class="small">O que está incluso</h2>
+    <div class="offer">
+      <div class="price-row">
+        <span class="old">R$ 497</span>
+        <span class="new">R$ 197</span>
+      </div>
+      <p class="installments">ou 12x de R$ 19,70</p>
+      <ul>
+        <li>5 módulos em vídeo, do zero ao primeiro anúncio</li>
+        <li>Modelos de anúncio prontos pra copiar</li>
+        <li>Acesso vitalício e atualizações incluídas</li>
+        <li>Grupo de dúvidas com suporte</li>
+      </ul>
+      <a class="cta" href="#">Garantir minha vaga</a>
+      <p class="guarantee">Garantia de 7 dias — não gostou, devolvemos o valor.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="small">Perguntas frequentes</h2>
+    <div class="faq-item">
+      <b>Preciso já ter loja ou produto?</b>
+      <p>Não. O curso ensina a estrutura mesmo pra quem ainda está decidindo o que vender.</p>
+    </div>
+    <div class="faq-item">
+      <b>Funciona pra qualquer nicho?</b>
+      <p>Sim, o método é sobre estrutura de anúncio e não sobre um produto específico.</p>
+    </div>
+    <div class="faq-item">
+      <b>Quanto tempo leva pra concluir?</b>
+      <p>Em média uma semana, no seu ritmo, assistindo alguns módulos por dia.</p>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2>Seu primeiro anúncio pode estar no ar hoje.</h2>
+    <p>Esse é um exemplo de página de vendas feita por mim, com conteúdo fictício pra demonstração.</p>
+    <a class="cta" href="https://discord.gg/kQ3WYrvMN">Quero uma página assim</a>
+    <footer>Exemplo de portfólio — Saran Page. Curso, depoimento e preços fictícios.</footer>
+  </section>
+
+</div>
+</body>
+</html>
